@@ -13,12 +13,12 @@ Now you have your Planner data in *tibble* form!
 ### Plotting with RPLP
 Using the `plot_planner()` function, you can quickly create a **donut chart** using `ggplot` to your specifications. `plot_planner()` supports filtering by:
 
-- `tasks`: Tasks (w/o Checklists)
-- `checklists`: Tasks (w/ Checklists)
-- `priority`: Priority
-- `late`: Late Tasks
-- `assigned_to`: Assigned To
-- `completed_by`: Completed By
+- `tasks` - Tasks (w/o Checklists)
+- `checklists` - Tasks (w/ Checklists)
+- `priority` - Priority
+- `late` - Late Tasks
+- `assigned_to` - Assigned To
+- `completed_by` - Completed By
 
 #### Examples:
 
