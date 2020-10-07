@@ -54,7 +54,7 @@ plot_planner(plan_xlsx,
     theme_bw()
 ```
 
-### Using dplyr with Planner data
+### Using `dplyr` with Planner data
 
 Currently there's two supported ways of using `dplyr` functions via RPLP.
 
