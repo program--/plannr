@@ -1,4 +1,10 @@
-plot_planner <- function(planner, by = "tasks", data_only = FALSE, ...) {
+plot_planner <- function(planner, by = "tasks", data_only = FALSE, basic_plot = FALSE, ...) {
+    
+    # Exception
+    if (!missing(data_only) && !missing(basic_plot)) {
+        print("Use only 'data_only' or 'basic_plot' but not both.")
+    }
+    
     # Instantiate variable
     plot_data <- NA
 
@@ -98,8 +104,7 @@ plot_planner <- function(planner, by = "tasks", data_only = FALSE, ...) {
         return(plot_data)
     }
 
-    gg <- 
-        ggplot(plot_data, 
+    gg <- ggplot(plot_data, 
                aes(
                    ymax = ymax,
                    ymin = ymin,
@@ -107,12 +112,18 @@ plot_planner <- function(planner, by = "tasks", data_only = FALSE, ...) {
                    xmin = 3,
                    fill = category
                )
-        ) +
-        geom_rect() +
-        coord_polar(theta = "y") +
-        xlim(c(0,4)) +
-        theme_void() +
-        labs(...)
+        )
+
+    if(basic_plot) {
+        return(gg + labs(...))
+    }
+
+    gg <- gg +
+          geom_rect() +
+          coord_polar(theta = "y") +
+          xlim(c(0,4)) +
+          theme_void() +
+          labs(...)
     
     return(gg)
 }
