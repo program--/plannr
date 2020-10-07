@@ -79,10 +79,10 @@
   <div class="contents col-md-9">
 <div id="section" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#section" class="anchor"></a><img src="reference/figures/logo.png" alt="R Planner Parser" width="66%">
+<a href="#section" class="anchor"></a><a href="https://plannr.justinsingh.me"><img src="reference/figures/logo.png" alt="R Planner Parser" width="66%"></a>
 </h1></div>
 
-<p><strong>plannr</strong> is an in-development package used for parsing Microsoft Planner data into R via exported Excel spreadsheets to easily create beautiful <strong>ggplot</strong> visuals.</p>
+<p><strong>plannr</strong> is an in-development package used for parsing <strong>Microsoft Planner</strong> data into R via exported <em>Excel</em> spreadsheets to easily create beautiful <strong>ggplot</strong> visuals.</p>
 <p>Usage of plannr is fairly simple:</p>
 <ol>
 <li>Open your planner in the Microsoft Planner web application.</li>
@@ -90,9 +90,9 @@
 <li>Read using plannr’s <code>read_planner()</code> function.</li>
 </ol>
 <p>Now you have your Planner data in <em>tibble</em> form!</p>
-<div id="plotting-with-plannr" class="section level3">
-<h3 class="hasAnchor">
-<a href="#plotting-with-plannr" class="anchor"></a>Plotting with plannr</h3>
+<div id="plotting-with-plannr" class="section level2">
+<h2 class="hasAnchor">
+<a href="#plotting-with-plannr" class="anchor"></a>Plotting with plannr</h2>
 <p>Using the <code><a href="reference/plot_planner.html">plot_planner()</a></code> function, you can quickly create a <strong>donut chart</strong> using <code>ggplot</code> to your specifications. <code><a href="reference/plot_planner.html">plot_planner()</a></code> supports filtering by:</p>
 <ul>
 <li>
@@ -108,9 +108,9 @@
 <li>
 <code>completed_by</code> - Completed By</li>
 </ul>
-<div id="examples" class="section level4">
-<h4 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples:</h4>
+<div id="examples" class="section level3">
+<h3 class="hasAnchor">
+<a href="#examples" class="anchor"></a>Examples:</h3>
 <p><strong>Basic Usage</strong></p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
 <span class="co"># Print a donut plot taking into account checklists on tasks</span>
@@ -137,14 +137,19 @@
     <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></pre></div>
 </div>
 </div>
-<div id="using-dplyr-with-planner-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#using-dplyr-with-planner-data" class="anchor"></a>Using <code>dplyr</code> with Planner data</h3>
+<div id="using-dplyr-with-planner-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#using-dplyr-with-planner-data" class="anchor"></a>Using <code>dplyr</code> with Planner data</h2>
 <p>Currently there’s two supported ways of using <code>dplyr</code> functions via plannr.</p>
 <ol>
 <li>Using <code><a href="reference/filter_planner.html">filter_planner()</a></code> for <code><a href="https://dplyr.tidyverse.org/reference/filter.html">dplyr::filter()</a></code>.</li>
 <li>Using <code><a href="reference/plot_planner.html">plot_planner(..., data_only = TRUE, ...)</a></code> with <code>tidyverse</code> piping.</li>
 </ol>
+</div>
+<div id="documentation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#documentation" class="anchor"></a>Documentation</h2>
+<p>You can view the documentation here: <a href="https://plannr.justinsingh.me">https://plannr.justinsingh.me</a>.</p>
 </div>
 </div>
   </div>
