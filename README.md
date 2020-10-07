@@ -1,16 +1,16 @@
 # <img src="man/figures/logo.png" alt="R Planner Parser" width=75% />
 
-**R Planner Parser (RPLP)** is an in-development package used for parsing Microsoft Planner data into R via exported Excel spreadsheets to create beautiful **ggplot** graphs.
+**plannr** is an in-development package used for parsing Microsoft Planner data into R via exported Excel spreadsheets to create beautiful **ggplot** graphs.
 
-Usage of RPLP is farily simple:
+Usage of plannr is fairly simple:
 
 1. Open your planner in the Microsoft Planner web application.
 2. Export plan to Excel (as `.xlsx`).
-3. Read using RPLP's `read_planner()` function.
+3. Read using plannr's `read_planner()` function.
 
 Now you have your Planner data in *tibble* form!
 
-### Plotting with RPLP
+### Plotting with plannr
 Using the `plot_planner()` function, you can quickly create a **donut chart** using `ggplot` to your specifications. `plot_planner()` supports filtering by:
 
 - `tasks` - Tasks (w/o Checklists)
@@ -45,10 +45,11 @@ plot_planner(plan_xlsx, by = "priority", data_only = TRUE)
 #
 # labs() parameters can be added to the end of the argument list
 # for plot_planner() calls.
-plot_planner(plan_xlsx,
-             by = "tasks",
-             basic_plot = TRUE,
-             title = "Tasks Progress"
+plot_planner(
+    plan_xlsx,
+    by = "tasks",
+    basic_plot = TRUE,
+    title = "Tasks Progress"
 ) +
     geom_bar() +
     theme_bw()
@@ -56,7 +57,7 @@ plot_planner(plan_xlsx,
 
 ### Using `dplyr` with Planner data
 
-Currently there's two supported ways of using `dplyr` functions via RPLP.
+Currently there's two supported ways of using `dplyr` functions via plannr.
 
 1. Using `filter_planner()` for `dplyr::filter()`.
 2. Using `plot_planner(..., data_only = TRUE, ...)` with `tidyverse` piping.

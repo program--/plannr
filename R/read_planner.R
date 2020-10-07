@@ -1,3 +1,14 @@
+#' @title Get Planner Data
+#' @description Read in Microsoft Planner data from .xlsx file
+#' @param xlsx A Microsoft Excel spreadsheet exported from Planner
+#' @return A list of plan name, plan export date, and tibble of plan data
+#' @examples
+#' \dontrun{
+#' ## Basic Usage
+#'      get_planner("path/to/planner.xlsx")
+#' }
+#' @export
+
 get_planner <- function(xlsx) {
     # Read .xlsx
     plan_data <- readxl::read_excel(xlsx)

@@ -1,3 +1,31 @@
+#' @title Plot or get plottable data from Planner
+#' @description Allows the ability to quickly filter plottable data by column or directly plot with ggplot2.
+#' @param planner Planner data returned from read_planner()
+#' @param by Column to filter planner data by. Either: "tasks", "checklists", "priority", "late", "assigned_to", or "completed_by"
+#' @param data_only If TRUE, makes function return plottable data as a tibble. Must be FALSE if basic_plot is set to TRUE
+#' @param basic_plot If TRUE, makes function return a basic ggplot. Must be FALSE if data_only is set to TRUE
+#' @param ... Extra arguments for ggplot labs()
+#' @return Either plottable data as a tibble, a simple ggplot, or a ggplot donut chart.
+#' @examples
+#' \dontrun{
+#' ## Basic Usage
+#'      plot_planner(plan_xlsx, by = "checklists")
+#' 
+#' ## Filtered Plottable Plan Data
+#'      plot_planner(plan_xlsx, by = "priority", data_only = TRUE)
+#' 
+#' ## Extended with ggplot2
+#'      plot_planner(
+#'          plan_xlsx,
+#'          by = "tasks",
+#'          basic_plot = TRUE,
+#'          title = "Tasks Progress"
+#'      ) +
+#'          geom_bar() +
+#'          theme_bw()
+#' }
+#' @export
+
 plot_planner <- function(planner, by = "tasks", data_only = FALSE, basic_plot = FALSE, ...) {
     
     # Exception
@@ -11,15 +39,15 @@ plot_planner <- function(planner, by = "tasks", data_only = FALSE, basic_plot = 
     # Switch type of plot
     switch(by,
            "tasks" = {
-               plan_completed_tasks <- planner %>%
-                   filter(`Progress` == "Completed") %>%
-                   count()
+               plan_completed_tasks <- planner[[3]] %>%
+                   dplyr::filter(`Progress` == "Completed") %>%
+                   dplyr::count()
 
-               plan_in_progress_tasks <- planner %>%
-                   filter(`Progress` == "In progress") %>%
-                   count()
+               plan_in_progress_tasks <- planner[[3]] %>%
+                   dplyr::filter(`Progress` == "In progress") %>%
+                   dplyr::count()
 
-               plan_notstarted_tasks <- count(planner) - (plan_completed_tasks + plan_in_progress_tasks)
+               plan_notstarted_tasks <- count(planner[[3]]) - (plan_completed_tasks + plan_in_progress_tasks)
 
                plot_data <- data.frame(
                    category = c("Not Started", "In Progress", "Completed"),
@@ -30,13 +58,13 @@ plot_planner <- function(planner, by = "tasks", data_only = FALSE, basic_plot = 
            },
            "checklists" = {
                plan_completed_tasks <- 
-                   stringr::str_sub(sub("\\/.*", "", as.data.frame(planner[15])[[1]]),
+                   stringr::str_sub(sub("\\/.*", "", as.data.frame(planner[[3]][15])[[1]]),
                                    start = 1) %>%
                    as.numeric() %>%
                    sum(na.rm = TRUE)
             
                plan_total_tasks <- 
-                   sub(".*\\/", "", as.data.frame(planner[15])[[1]]) %>%
+                   sub(".*\\/", "", as.data.frame(planner[[3]][15])[[1]]) %>%
                    as.numeric() %>%
                    sum(na.rm = TRUE)
 
@@ -50,14 +78,14 @@ plot_planner <- function(planner, by = "tasks", data_only = FALSE, basic_plot = 
                )
            },
            "priority" = {
-               plan_urgent_tasks <- filter(planner, `Priority` == "Urgent") %>%
-                   count()
-               plan_important_tasks <- filter(planner, `Priority` == "Important") %>%
-                   count()
-               plan_medium_tasks <- filter(planner, `Priority` == "Medium") %>%
-                   count()
-               plan_low_tasks <- filter(planner, `Priority` == "Low") %>%
-                   count()
+               plan_urgent_tasks <- dplyr::filter(planner[[3]], `Priority` == "Urgent") %>%
+                   dplyr::count()
+               plan_important_tasks <- dplyr::filter(planner[[3]], `Priority` == "Important") %>%
+                   dplyr::count()
+               plan_medium_tasks <- dplyr::filter(planner[[3]], `Priority` == "Medium") %>%
+                   dplyr::count()
+               plan_low_tasks <- dplyr::filter(planner[[3]], `Priority` == "Low") %>%
+                   dplyr::count()
 
                plot_data <- data.frame(
                    category = c("Urgent", "Important", "Medium", "Low"),
@@ -69,10 +97,10 @@ plot_planner <- function(planner, by = "tasks", data_only = FALSE, basic_plot = 
                )
            },
            "late" = {
-               plan_late_tasks <- filter(planner, `Late` == "true") %>%
-                   count()
+               plan_late_tasks <- dplyr::filter(planner[[3]], `Late` == "true") %>%
+                   dplyr::count()
 
-               plan_not_late_tasks <- count(planner) - plan_late_tasks
+               plan_not_late_tasks <- count(planner[[3]]) - plan_late_tasks
 
                plot_data <- data.frame(
                    category = c("Late", "On Time"),
@@ -81,15 +109,15 @@ plot_planner <- function(planner, by = "tasks", data_only = FALSE, basic_plot = 
                )
            },
            "assigned_to" = {
-               plot_data <- planner %>%
-                  group_by(`Assigned To`) %>%
-                  summarize(n) %>%
+               plot_data <- planner[[3]] %>%
+                  dplyr::group_by(`Assigned To`) %>%
+                  dplyr::summarize(n) %>%
                   setNames(c("category", "task_data"))
            },
            "completed_by" = {
-               plot_data <- planner %>%
-                  group_by(`Completed By`) %>%
-                  summarize(n) %>%
+               plot_data <- planner[[3]] %>%
+                  dplyr::group_by(`Completed By`) %>%
+                  dplyr::summarize(n) %>%
                   setNames(c("category", "task_data"))
            }
     )
@@ -104,14 +132,14 @@ plot_planner <- function(planner, by = "tasks", data_only = FALSE, basic_plot = 
         return(plot_data)
     }
 
-    gg <- ggplot(plot_data, 
-               aes(
-                   ymax = ymax,
-                   ymin = ymin,
-                   xmax = 4,
-                   xmin = 3,
-                   fill = category
-               )
+    gg <- ggplot2::ggplot(plot_data, 
+                          aes(
+                              ymax = ymax,
+                              ymin = ymin,
+                              xmax = 4,
+                              xmin = 3,
+                              fill = category
+                          )
         )
 
     if(basic_plot) {
