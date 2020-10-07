@@ -3,7 +3,7 @@ url: https://github.com/program--/plannr
 reference:
   - title: Parsing Planner Data
     contents:
-      - '`read_planner`'
+      - '`get_planner`'
       - '`filter_planner`'
       - '`plot_planner`'
 
@@ -12,5 +12,5 @@ navbar:
     - icon: fa-home
       href: index.html
     - icon: fa-file-code-o
-      text: "Functions"
-      href: #
+      text: "References"
+      href: reference/index.html
