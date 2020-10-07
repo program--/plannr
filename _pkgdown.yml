@@ -1,0 +1,16 @@
+title: "plannr"
+url: https://github.com/program--/plannr
+reference:
+  - title: Parsing Planner Data
+    contents:
+      - '`read_planner`'
+      - '`filter_planner`'
+      - '`plot_planner`'
+
+navbar:
+  left:
+    - icon: fa-home
+      href: index.html
+    - icon: fa-file-code-o
+      text: "Functions"
+      href: #
