@@ -12,7 +12,8 @@ filter_planner(planner, ...)
 \item{...}{dplyr::filter arguments}
 }
 \value{
-A new Planner list with original plan name, original plan export date, and filtered plan data
+A new Planner list with original plan name,
+        original plan export date, and filtered plan data
 }
 \description{
 Using dplyr, quickly filter planner data from read_planner()

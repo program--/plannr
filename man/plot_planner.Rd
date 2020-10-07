@@ -9,19 +9,26 @@ plot_planner(planner, by = "tasks", data_only = FALSE, basic_plot = FALSE, ...)
 \arguments{
 \item{planner}{Planner data returned from read_planner()}
 
-\item{by}{Column to filter planner data by. Either: "tasks", "checklists", "priority", "late", "assigned_to", or "completed_by"}
+\item{by}{Column to filter planner data by.
+Either: "tasks", "checklists", "priority",
+        "late", "assigned_to", or "completed_by"}
 
-\item{data_only}{If TRUE, makes function return plottable data as a tibble. Must be FALSE if basic_plot is set to TRUE}
+\item{data_only}{If TRUE, makes function return plottable data as a tibble.
+Must be FALSE if basic_plot is set to TRUE}
 
-\item{basic_plot}{If TRUE, makes function return a basic ggplot. Must be FALSE if data_only is set to TRUE}
+\item{basic_plot}{If TRUE, makes function return a basic ggplot.
+Must be FALSE if data_only is set to TRUE}
 
 \item{...}{Extra arguments for ggplot labs()}
 }
 \value{
-Either plottable data as a tibble, a simple ggplot, or a ggplot donut chart.
+Either plottable data as a tibble, a simple ggplot,
+        or a ggplot donut chart.
 }
 \description{
-Allows the ability to quickly filter plottable data by column or directly plot with ggplot2.
+Allows the ability to quickly 
+             filter plottable data by column or
+             directly plot with ggplot2.
 }
 \examples{
 \dontrun{

@@ -2,7 +2,8 @@
 #' @description Using dplyr, quickly filter planner data from read_planner()
 #' @param planner Planner data returned from read_planner()
 #' @param ... dplyr::filter arguments
-#' @return A new Planner list with original plan name, original plan export date, and filtered plan data
+#' @return A new Planner list with original plan name,
+#'         original plan export date, and filtered plan data
 #' @examples
 #' \dontrun{
 #' ## Basic Usage
