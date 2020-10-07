@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Filter Planner Data — filter_planner • plannr</title>
+<title>Get Planner Data — read_planner • plannr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Filter Planner Data — filter_planner" />
-<meta property="og:description" content="Using dplyr, quickly filter planner data from read_planner()" />
+<meta property="og:title" content="Get Planner Data — read_planner" />
+<meta property="og:description" content="Read in Microsoft Planner data from .xlsx file" />
 <meta property="og:image" content="https://github.com/program--/plannr/logo.png" />
 
 
@@ -120,38 +120,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Filter Planner Data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/program--/plannr/blob/master/R/filter_planner.R'><code>R/filter_planner.R</code></a></small>
-    <div class="hidden name"><code>filter_planner.Rd</code></div>
+    <h1>Get Planner Data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/program--/plannr/blob/master/R/read_planner.R'><code>R/read_planner.R</code></a></small>
+    <div class="hidden name"><code>read_planner.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Using dplyr, quickly filter planner data from read_planner()</p>
+    <p>Read in Microsoft Planner data from .xlsx file</p>
     </div>
 
-    <pre class="usage"><span class='fu'>filter_planner</span><span class='op'>(</span><span class='va'>planner</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>read_planner</span><span class='op'>(</span><span class='va'>xlsx</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>planner</th>
-      <td><p>Planner data returned from read_planner()</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>dplyr::filter arguments</p></td>
+      <th>xlsx</th>
+      <td><p>A Microsoft Excel spreadsheet exported from Planner</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A new Planner list with original plan name, original plan export date, and filtered plan data</p>
+    <p>A list of plan name, plan export date, and tibble of plan data</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'>## Basic Usage</span>
-     <span class='fu'>filter_planner</span><span class='op'>(</span><span class='va'>plan</span>, <span class='va'>Progress</span> <span class='op'>==</span> <span class='st'>"Not started"</span>, <span class='va'>Priority</span> <span class='op'>==</span> <span class='st'>"Urgent"</span><span class='op'>)</span>
+     <span class='fu'>read_planner</span><span class='op'>(</span><span class='st'>"path/to/planner.xlsx"</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
   </div>

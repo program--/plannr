@@ -20,6 +20,6 @@ Using dplyr, quickly filter planner data from read_planner()
 \examples{
 \dontrun{
 ## Basic Usage
-     filter_planner(plan, `Progress` == "Not started", `Priority` == "Urgent")
+     filter_planner(plan, Progress == "Not started", Priority == "Urgent")
 }
 }

@@ -12,11 +12,13 @@ Imports:
     readxl,
     dplyr,
     ggplot2,
-    stringr
+    stringr,
+    readr,
+    hablar
 Suggests:
     testthat,
     covr
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/program--/plannr

@@ -40,11 +40,11 @@ plot_planner <- function(planner, by = "tasks", data_only = FALSE, basic_plot = 
     switch(by,
            "tasks" = {
                plan_completed_tasks <- planner[[3]] %>%
-                   dplyr::filter(`Progress` == "Completed") %>%
+                   dplyr::filter(Progress == "Completed") %>%
                    dplyr::count()
 
                plan_in_progress_tasks <- planner[[3]] %>%
-                   dplyr::filter(`Progress` == "In progress") %>%
+                   dplyr::filter(Progress == "In progress") %>%
                    dplyr::count()
 
                plan_notstarted_tasks <- count(planner[[3]]) - (plan_completed_tasks + plan_in_progress_tasks)
@@ -78,13 +78,13 @@ plot_planner <- function(planner, by = "tasks", data_only = FALSE, basic_plot = 
                )
            },
            "priority" = {
-               plan_urgent_tasks <- dplyr::filter(planner[[3]], `Priority` == "Urgent") %>%
+               plan_urgent_tasks <- dplyr::filter(planner[[3]], Priority == "Urgent") %>%
                    dplyr::count()
-               plan_important_tasks <- dplyr::filter(planner[[3]], `Priority` == "Important") %>%
+               plan_important_tasks <- dplyr::filter(planner[[3]], Priority == "Important") %>%
                    dplyr::count()
-               plan_medium_tasks <- dplyr::filter(planner[[3]], `Priority` == "Medium") %>%
+               plan_medium_tasks <- dplyr::filter(planner[[3]], Priority == "Medium") %>%
                    dplyr::count()
-               plan_low_tasks <- dplyr::filter(planner[[3]], `Priority` == "Low") %>%
+               plan_low_tasks <- dplyr::filter(planner[[3]], Priority == "Low") %>%
                    dplyr::count()
 
                plot_data <- data.frame(
@@ -97,7 +97,7 @@ plot_planner <- function(planner, by = "tasks", data_only = FALSE, basic_plot = 
                )
            },
            "late" = {
-               plan_late_tasks <- dplyr::filter(planner[[3]], `Late` == "true") %>%
+               plan_late_tasks <- dplyr::filter(planner[[3]], Late == "true") %>%
                    dplyr::count()
 
                plan_not_late_tasks <- count(planner[[3]]) - plan_late_tasks

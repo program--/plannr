@@ -6,7 +6,7 @@
 #' @examples
 #' \dontrun{
 #' ## Basic Usage
-#'      filter_planner(plan, `Progress` == "Not started", `Priority` == "Urgent")
+#'      filter_planner(plan, Progress == "Not started", Priority == "Urgent")
 #' }
 #' @export
 filter_planner <- function(planner, ...) {

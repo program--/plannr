@@ -5,16 +5,16 @@
 #' @examples
 #' \dontrun{
 #' ## Basic Usage
-#'      get_planner("path/to/planner.xlsx")
+#'      read_planner("path/to/planner.xlsx")
 #' }
 #' @export
 
-get_planner <- function(xlsx) {
+read_planner <- function(xlsx) {
     # Read .xlsx
     plan_data <- readxl::read_excel(xlsx)
 
     # Read Planner Name
-    plan_name <- colnames(plan_data[[2]][2])
+    plan_name <- colnames(plan_data[2])
 
     # Read Planner Export Date
     plan_date <- plan_data[[2]][2]
@@ -26,7 +26,7 @@ get_planner <- function(xlsx) {
     # Create Planner List with name, data, and data
     planner <- list()
     planner[[1]] <- plan_name
-    planner[[2]] <- plan_data
+    planner[[2]] <- plan_date
     planner[[3]] <- filtered_data
 
     # Return organized Planner data
