@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/program--/plannr.svg?branch=master)](https://travis-ci.org/program--/plannr)
 [![Codecov test coverage](https://codecov.io/gh/program--/plannr/branch/master/graph/badge.svg)](https://codecov.io/gh/program--/plannr?branch=master)
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
 **plannr** is an in-development package used for parsing **Microsoft Planner** data into R via exported *Excel* spreadsheets to easily create beautiful **ggplot** visuals.
 
