@@ -2,7 +2,7 @@ pandoc: '2.10'
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2020-10-08T05:47Z
+last_built: 2020-10-08T05:51Z
 urls:
   reference: https://github.com/program--/plannr/reference
   article: https://github.com/program--/plannr/articles

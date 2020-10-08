@@ -1,4 +1,4 @@
-# <a href="https://plannr.justinsingh.me"><img src="man/figures/logo.png" alt="R Planner Parser" width=66% /></a>
+# <a href="https://plannr.justinsingh.me"><img src="man/figures/logo.png" alt="R Planner Parser" width=50% /></a>
 
 [![Build Status](https://travis-ci.org/program--/plannr.svg?branch=master)](https://travis-ci.org/program--/plannr)
 [![Codecov test coverage](https://codecov.io/gh/program--/plannr/branch/master/graph/badge.svg)](https://codecov.io/gh/program--/plannr?branch=master)
