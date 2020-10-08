@@ -1,10 +1,15 @@
 title: "plannr"
 url: https://github.com/program--/plannr
+template:
+  params:
+    bootswatch: paper
 reference:
   - title: Parsing Planner Data
     contents:
       - '`read_planner`'
       - '`filter_planner`'
+  - title: Plotting Planner Data
+    contents:
       - '`plot_planner`'
 
 navbar:
