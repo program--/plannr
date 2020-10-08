@@ -71,7 +71,7 @@ plot_planner(
 Currently there's two supported ways of using `dplyr` functions via plannr.
 
 1. Using `filter_planner()` for `dplyr::filter()`.
-2. Using `plot_planner(..., data_only = TRUE, ...)` with `tidyverse` piping.
+2. Using `plot_planner(..., data_only = TRUE, ...)` with `magrittr` piping.
 
 ## Documentation
 
