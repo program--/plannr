@@ -13,6 +13,13 @@ Usage of plannr is fairly simple:
 
 Now you have your Planner data in *tibble* form!
 
+## Installation
+To install the developmental version:
+
+```r
+remotes::install_github("program--/plannr")
+```
+
 ## Plotting with plannr
 Using the `plot_planner()` function, you can quickly create a **donut chart** using `ggplot` to your specifications. `plot_planner()` supports filtering by:
 
