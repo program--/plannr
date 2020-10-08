@@ -31,6 +31,11 @@
 #'          geom_bar() +
 #'          theme_bw()
 #' }
+#' @import ggplot2
+#' @import dplyr
+#' @importFrom magrittr %>%
+#' @importFrom stringr str_sub
+#' @importFrom utils head
 #' @export
 
 plot_planner <- function(planner, by = "tasks",

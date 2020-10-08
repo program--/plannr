@@ -16,7 +16,8 @@ Imports:
     ggplot2,
     stringr,
     stats,
-    readr
+    readr,
+    hablar
 Suggests:
     testthat,
     covr

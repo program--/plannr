@@ -7,6 +7,7 @@
 #' ## Basic Usage
 #'      read_planner("path/to/planner.xlsx")
 #' }
+#' @importFrom stats setNames
 #' @export
 
 read_planner <- function(xlsx) {
