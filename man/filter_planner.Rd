@@ -7,16 +7,16 @@
 filter_planner(planner, ...)
 }
 \arguments{
-\item{planner}{Planner data returned from read_planner()}
+\item{planner}{Planner data returned from \code{\link{read_planner}}}
 
-\item{...}{dplyr::filter arguments}
+\item{\dots}{\code{dplyr::filter} arguments}
 }
 \value{
 A new Planner object with original plan name,
         original plan export date, and filtered plan data
 }
 \description{
-Using dplyr, quickly filter planner data from read_planner()
+Using \code{dplyr}, quickly filter planner data from \code{\link{read_planner}}
 }
 \examples{
 \dontrun{

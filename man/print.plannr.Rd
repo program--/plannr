@@ -4,10 +4,12 @@
 \alias{print.plannr}
 \title{Print}
 \usage{
-\method{print}{plannr}(planner)
+\method{print}{plannr}(x, ...)
 }
 \arguments{
-\item{planner}{Object of class `plannr`}
+\item{x}{Object of class `plannr`}
+
+\item{\dots}{further arguments passed to or from other methods}
 }
 \value{
 The planner name and export date.

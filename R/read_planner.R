@@ -1,8 +1,8 @@
 #' @title Get Planner Data
 #' @description Read in Microsoft Planner data from .xlsx file
 #' @param xlsx A Microsoft Excel spreadsheet exported from Planner
-#' @param plan_name String of preferred plan name. If `NA`, name of planner will be used.
-#' @param plan_date String of preferred plane date. If `NA`, export date of planner will be used.
+#' @param plan_name String of preferred plan name. If \code{NA}, name of planner will be used.
+#' @param plan_date String of preferred plane date. If \code{NA}, export date of planner will be used.
 #' @return A list of plan name, plan export date, and tibble of plan data
 #' @examples
 #' \dontrun{
@@ -98,7 +98,7 @@ read_planner <- function(xlsx, plan_name = NA, plan_date = NA) {
                               Total       = sum(as.numeric(sub(".*\\/", "", as.data.frame(filtered_data[15])[[1]])), na.rm = TRUE),
                               Completed   = sum(as.numeric(stringr::str_sub(sub("\\/.*", "", as.data.frame(filtered_data[15])[[1]]), start = 1)), na.rm = TRUE)
                           ) %>%
-                          dplyr::mutate(Not.Started = Total - Completed)
+                          dplyr::mutate(Not.Started = .data$Total - .data$Completed)
 
     planner$priority <- data.frame(
                             Urgent    = sum(filtered_data[[5]] == "Urgent"),
@@ -107,10 +107,10 @@ read_planner <- function(xlsx, plan_name = NA, plan_date = NA) {
                             Low       = sum(filtered_data[[5]] == "Low")
                         )
 
-    planner$assignment  <- dplyr::count(filtered_data, Assigned.To) %>%
+    planner$assignment  <- dplyr::count(filtered_data, .data$Assigned.To) %>%
                            dplyr::rename(Tasks = n)
 
-    planner$completion  <- dplyr::count(filtered_data, Completed.By) %>%
+    planner$completion  <- dplyr::count(filtered_data, .data$Completed.By) %>%
                            dplyr::rename(Tasks = n)
 
     # Make plannr class

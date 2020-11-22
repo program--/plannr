@@ -1,6 +1,7 @@
 #' @title Print
 #' @description Print method for `plannr` class
-#' @param planner Object of class `plannr`
+#' @param x Object of class `plannr`
+#' @param \dots further arguments passed to or from other methods
 #' @return The planner name and export date.
 #' @examples
 #' \dontrun{
@@ -12,18 +13,17 @@
 #' @importFrom crayon cyan
 #' @importFrom crayon make_style
 #' @export
-
-print.plannr <- function(planner) {
+print.plannr <- function(x, ...) {
     orange <- crayon::make_style("darkorange3")
     cat(orange("=======>> PLANNER <<=======\n"))
     cat(paste0(
         crayon::bold("   Plan Name: "),
-        crayon::cyan(planner$plan_name),
+        crayon::cyan(x$plan_name),
         "\n"
     ))
     cat(paste0(
         crayon::bold(" Export Date: "),
-        crayon::cyan(planner$export_date),
+        crayon::cyan(x$export_date),
         "\n"
     ))
     cat(orange("===========================\n"))
@@ -31,7 +31,8 @@ print.plannr <- function(planner) {
 
 #' @title Summary
 #' @description Summary method for `plannr` class
-#' @param planner Object of class `plannr`
+#' @param object Object of class `plannr`
+#' @param \dots further arguments passed to or from other methods
 #' @return A summary of the planner.
 #' @examples
 #' \dontrun{
@@ -46,34 +47,33 @@ print.plannr <- function(planner) {
 #' @importFrom crayon green
 #' @importFrom crayon make_style
 #' @export
-
-summary.plannr <- function(planner) {
+summary.plannr <- function(object, ...) {
     orange <- crayon::make_style("darkorange3")
     cat(orange("=======>> PLANNER <<=======\n"))
     cat(paste0(
         crayon::bold("   Plan Name: "),
-        crayon::cyan(planner$plan_name),
+        crayon::cyan(object$plan_name),
         "\n"
     ))
     cat(paste0(
         crayon::bold(" Export Date: "),
-        crayon::cyan(planner$export_date),
+        crayon::cyan(object$export_date),
         "\n"
     ))
 
     cat(orange("========>> TASKS <<========\n"))
     cat(paste0(
         crayon::bold("      Total: "),
-        crayon::underline(planner$tasks$Total, "Tasks\n")
+        crayon::underline(object$tasks$Total, "Tasks\n")
     ))
     cat(paste0(
         crayon::bold("  Completed: "),
-        crayon::green(planner$tasks$Completed),
-        paste(rep(" ", 5 - nchar(planner$tasks$Completed)), collapse = ""),
+        crayon::green(object$tasks$Completed),
+        paste(rep(" ", 5 - nchar(object$tasks$Completed)), collapse = ""),
         crayon::green(paste0(
             "(",
             formatC(
-                planner$tasks$Completed  / planner$tasks$Total * 100,
+                object$tasks$Completed  / object$tasks$Total * 100,
                 digits = 2,
                 format = "f"
             ),
@@ -82,12 +82,12 @@ summary.plannr <- function(planner) {
     ))
     cat(paste0(
         crayon::bold("In Progress: "),
-        crayon::yellow(planner$tasks$In.Progress),
-        paste(rep(" ", 5 - nchar(planner$tasks$In.Progress)), collapse = ""),
+        crayon::yellow(object$tasks$In.Progress),
+        paste(rep(" ", 5 - nchar(object$tasks$In.Progress)), collapse = ""),
         crayon::yellow(paste0(
             "(",
             formatC(
-                planner$tasks$In.Progress / planner$tasks$Total * 100,
+                object$tasks$In.Progress / object$tasks$Total * 100,
                 digits = 2,
                 format = "f"
             ),
@@ -96,12 +96,12 @@ summary.plannr <- function(planner) {
     ))
     cat(paste0(
         crayon::bold("Not Started: "),
-        crayon::red(planner$tasks$Not.Started),
-        paste(rep(" ", 5 - nchar(planner$tasks$Not.Started)), collapse = ""),
+        crayon::red(object$tasks$Not.Started),
+        paste(rep(" ", 5 - nchar(object$tasks$Not.Started)), collapse = ""),
         crayon::red(paste0(
             "(",
             formatC(
-                planner$tasks$Not.Started / planner$tasks$Total * 100,
+                object$tasks$Not.Started / object$tasks$Total * 100,
                 digits = 2,
                 format = "f"
             ),
@@ -112,16 +112,16 @@ summary.plannr <- function(planner) {
     cat(orange("===>> CHECKLIST TASKS <<===\n"))
     cat(paste0(
         crayon::bold("      Total:",
-        crayon::underline(planner$checklists$Total, "Tasks\n"))
+        crayon::underline(object$checklists$Total, "Tasks\n"))
     ))
     cat(paste0(
         crayon::bold("  Completed: "),
-        crayon::green(planner$checklists$Completed),
-        paste(rep(" ", 5 - nchar(planner$checklists$Completed)), collapse = ""),
+        crayon::green(object$checklists$Completed),
+        paste(rep(" ", 5 - nchar(object$checklists$Completed)), collapse = ""),
         crayon::green(paste0(
             "(",
             formatC(
-                planner$checklists$Completed  / planner$checklists$Total * 100,
+                object$checklists$Completed  / object$checklists$Total * 100,
                 digits = 2,
                 format = "f"
             ),
@@ -130,12 +130,12 @@ summary.plannr <- function(planner) {
     ))
     cat(paste0(
         crayon::bold("Not Started: "),
-        crayon::red(planner$checklists$Not.Started),
-        paste(rep(" ", 5 - nchar(planner$checklists$Not.Started)), collapse = ""),
+        crayon::red(object$checklists$Not.Started),
+        paste(rep(" ", 5 - nchar(object$checklists$Not.Started)), collapse = ""),
         crayon::red(paste0(
             "(",
             formatC(
-                planner$checklists$Not.Started / planner$checklists$Total * 100,
+                object$checklists$Not.Started / object$checklists$Total * 100,
                 digits = 2,
                 format = "f"
             ),

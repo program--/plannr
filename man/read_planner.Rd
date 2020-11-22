@@ -9,9 +9,9 @@ read_planner(xlsx, plan_name = NA, plan_date = NA)
 \arguments{
 \item{xlsx}{A Microsoft Excel spreadsheet exported from Planner}
 
-\item{plan_name}{String of preferred plan name. If `NA`, name of planner will be used.}
+\item{plan_name}{String of preferred plan name. If \code{NA}, name of planner will be used.}
 
-\item{plan_date}{String of preferred plane date. If `NA`, export date of planner will be used.}
+\item{plan_date}{String of preferred plane date. If \code{NA}, export date of planner will be used.}
 }
 \value{
 A list of plan name, plan export date, and tibble of plan data

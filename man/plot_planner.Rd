@@ -20,22 +20,21 @@ plot_planner(
 Either: "tasks", "checklists", "priority",
         "late", "assigned_to", or "completed_by"}
 
-\item{data_only}{If TRUE, makes function return plottable data as a tibble.
-Must be FALSE if basic_plot is set to TRUE}
+\item{data_only}{If \code{TRUE}, makes function return plottable data as a tibble.}
 
-\item{plot_type}{Character of plot type. Supports: NA, "basic".}
+\item{plot_type}{Character of plot type. Supports: \code{NA}, \code{basic}.}
 
-\item{interactive}{If TRUE, returns a *plotly* interactive plot.}
+\item{interactive}{If \code{TRUE}, returns a \code{plotly} interactive plot.}
 
-\item{...}{Extra arguments for ggplot labs()}
+\item{\dots}{Extra arguments for ggplot labs()}
 }
 \value{
-Either plottable data as a tibble, ggplot object, or plotly object.
+Either plottable data as a \code{tibble}, \code{ggplot} object, or \code{plotly} object.
 }
 \description{
 Allows the ability to quickly
              filter plottable data by column or
-             directly plot with ggplot2/plotly.
+             directly plot with \code{ggplot2}/\code{plotly}.
 }
 \examples{
 \dontrun{

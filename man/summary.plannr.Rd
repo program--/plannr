@@ -4,10 +4,12 @@
 \alias{summary.plannr}
 \title{Summary}
 \usage{
-\method{summary}{plannr}(planner)
+\method{summary}{plannr}(object, ...)
 }
 \arguments{
-\item{planner}{Object of class `plannr`}
+\item{object}{Object of class `plannr`}
+
+\item{\dots}{further arguments passed to or from other methods}
 }
 \value{
 A summary of the planner.

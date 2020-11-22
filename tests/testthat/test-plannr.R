@@ -10,6 +10,8 @@ test_that("Planner is read correctly", {
   expect_error(plannr::read_planner(NA))
 
   expect_output(summary(test_data_read))
+
+  expect_output(print(test_data_read))
 })
 
 test_that("Planner is filtered correctly", {

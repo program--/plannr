@@ -1,17 +1,16 @@
 #' @title Plot or get plottable data from Planner
 #' @description Allows the ability to quickly
 #'              filter plottable data by column or
-#'              directly plot with ggplot2/plotly.
+#'              directly plot with \code{ggplot2}/\code{plotly}.
 #' @param planner Planner data returned from read_planner()
 #' @param by Column to filter planner data by.
 #'           Either: "tasks", "checklists", "priority",
 #'                   "late", "assigned_to", or "completed_by"
-#' @param data_only If TRUE, makes function return plottable data as a tibble.
-#'                  Must be FALSE if basic_plot is set to TRUE
-#' @param plot_type Character of plot type. Supports: NA, "basic".
-#' @param interactive If TRUE, returns a *plotly* interactive plot.
-#' @param ... Extra arguments for ggplot labs()
-#' @return Either plottable data as a tibble, ggplot object, or plotly object.
+#' @param data_only If \code{TRUE}, makes function return plottable data as a tibble.
+#' @param plot_type Character of plot type. Supports: \code{NA}, \code{basic}.
+#' @param interactive If \code{TRUE}, returns a \code{plotly} interactive plot.
+#' @param \dots Extra arguments for ggplot labs()
+#' @return Either plottable data as a \code{tibble}, \code{ggplot} object, or \code{plotly} object.
 #' @examples
 #' \dontrun{
 #'      ## Basic Usage
@@ -39,11 +38,11 @@
 #'     )
 #' }
 #' @import ggplot2
-#' @import plotly
 #' @import dplyr
 #' @importFrom magrittr %>%
 #' @importFrom stringr str_sub
 #' @importFrom utils head
+#' @rawNamespace import(plotly, except = last_plot)
 #' @export
 
 plot_planner <- function(planner, by = "tasks",
@@ -118,11 +117,11 @@ plot_planner <- function(planner, by = "tasks",
 
     gg <- ggplot2::ggplot(plot_data,
                           ggplot2::aes(
-                              ymax = ymax,
-                              ymin = ymin,
+                              ymax = .data$ymax,
+                              ymin = .data$ymin,
                               xmax = 4,
                               xmin = 3,
-                              fill = category
+                              fill = .data$category
                           )
         )
 

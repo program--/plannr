@@ -1,7 +1,7 @@
 #' @title Filter Planner Data
-#' @description Using dplyr, quickly filter planner data from read_planner()
-#' @param planner Planner data returned from read_planner()
-#' @param ... dplyr::filter arguments
+#' @description Using \code{dplyr}, quickly filter planner data from \code{\link{read_planner}}
+#' @param planner Planner data returned from \code{\link{read_planner}}
+#' @param \dots \code{dplyr::filter} arguments
 #' @return A new Planner object with original plan name,
 #'         original plan export date, and filtered plan data
 #' @examples
