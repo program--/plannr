@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plannr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -129,7 +129,7 @@
     <p>Read in Microsoft Planner data from .xlsx file</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_planner</span><span class='op'>(</span><span class='va'>xlsx</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>read_planner</span><span class='op'>(</span><span class='va'>xlsx</span>, plan_name <span class='op'>=</span> <span class='cn'>NA</span>, plan_date <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,6 +137,14 @@
     <tr>
       <th>xlsx</th>
       <td><p>A Microsoft Excel spreadsheet exported from Planner</p></td>
+    </tr>
+    <tr>
+      <th>plan_name</th>
+      <td><p>String of preferred plan name. If `NA`, name of planner will be used.</p></td>
+    </tr>
+    <tr>
+      <th>plan_date</th>
+      <td><p>String of preferred plane date. If `NA`, export date of planner will be used.</p></td>
     </tr>
     </table>
 

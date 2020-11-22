@@ -4,7 +4,14 @@
 \alias{plot_planner}
 \title{Plot or get plottable data from Planner}
 \usage{
-plot_planner(planner, by = "tasks", data_only = FALSE, basic_plot = FALSE, ...)
+plot_planner(
+  planner,
+  by = "tasks",
+  data_only = FALSE,
+  plot_type = NA,
+  interactive = FALSE,
+  ...
+)
 }
 \arguments{
 \item{planner}{Planner data returned from read_planner()}
@@ -16,36 +23,44 @@ Either: "tasks", "checklists", "priority",
 \item{data_only}{If TRUE, makes function return plottable data as a tibble.
 Must be FALSE if basic_plot is set to TRUE}
 
-\item{basic_plot}{If TRUE, makes function return a basic ggplot.
-Must be FALSE if data_only is set to TRUE}
+\item{plot_type}{Character of plot type. Supports: NA, "basic".}
+
+\item{interactive}{If TRUE, returns a *plotly* interactive plot.}
 
 \item{...}{Extra arguments for ggplot labs()}
 }
 \value{
-Either plottable data as a tibble, a simple ggplot,
-        or a ggplot donut chart.
+Either plottable data as a tibble, ggplot object, or plotly object.
 }
 \description{
-Allows the ability to quickly 
+Allows the ability to quickly
              filter plottable data by column or
-             directly plot with ggplot2.
+             directly plot with ggplot2/plotly.
 }
 \examples{
 \dontrun{
-## Basic Usage
+     ## Basic Usage
      plot_planner(plan_xlsx, by = "checklists")
 
-## Filtered Plottable Plan Data
+     ## Filtered Plottable Plan Data
      plot_planner(plan_xlsx, by = "priority", data_only = TRUE)
 
-## Extended with ggplot2
+     ## Extended with ggplot2
      plot_planner(
          plan_xlsx,
          by = "tasks",
-         basic_plot = TRUE,
+         plot_type = "basic",
          title = "Tasks Progress"
      ) +
-         geom_bar() +
-         theme_bw()
+     geom_bar() +
+     theme_bw()
+
+    ## Extended with plotly
+    plot_planner(
+        plan_xlsx,
+        by = "checklists",
+        interactive = TRUE,
+        title = "Interactive Donut Chart"
+    )
 }
 }

@@ -47,9 +47,9 @@
 
 
 <meta property="og:title" content="Plot or get plottable data from Planner — plot_planner" />
-<meta property="og:description" content="Allows the ability to quickly 
+<meta property="og:description" content="Allows the ability to quickly
              filter plottable data by column or
-             directly plot with ggplot2." />
+             directly plot with ggplot2/plotly." />
 <meta property="og:image" content="https://github.com/program--/plannr/logo.png" />
 
 
@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">plannr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -128,12 +128,19 @@
     </div>
 
     <div class="ref-description">
-    <p>Allows the ability to quickly 
+    <p>Allows the ability to quickly
              filter plottable data by column or
-             directly plot with ggplot2.</p>
+             directly plot with ggplot2/plotly.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plot_planner</span><span class='op'>(</span><span class='va'>planner</span>, by <span class='op'>=</span> <span class='st'>"tasks"</span>, data_only <span class='op'>=</span> <span class='cn'>FALSE</span>, basic_plot <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>plot_planner</span><span class='op'>(</span>
+  <span class='va'>planner</span>,
+  by <span class='op'>=</span> <span class='st'>"tasks"</span>,
+  data_only <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  plot_type <span class='op'>=</span> <span class='cn'>NA</span>,
+  interactive <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -154,9 +161,12 @@ Either: "tasks", "checklists", "priority",
 Must be FALSE if basic_plot is set to TRUE</p></td>
     </tr>
     <tr>
-      <th>basic_plot</th>
-      <td><p>If TRUE, makes function return a basic ggplot.
-Must be FALSE if data_only is set to TRUE</p></td>
+      <th>plot_type</th>
+      <td><p>Character of plot type. Supports: NA, "basic".</p></td>
+    </tr>
+    <tr>
+      <th>interactive</th>
+      <td><p>If TRUE, returns a *plotly* interactive plot.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -166,26 +176,33 @@ Must be FALSE if data_only is set to TRUE</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Either plottable data as a tibble, a simple ggplot,
-        or a ggplot donut chart.</p>
+    <p>Either plottable data as a tibble, ggplot object, or plotly object.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'>## Basic Usage</span>
+     <span class='co'>## Basic Usage</span>
      <span class='fu'>plot_planner</span><span class='op'>(</span><span class='va'>plan_xlsx</span>, by <span class='op'>=</span> <span class='st'>"checklists"</span><span class='op'>)</span>
 
-<span class='co'>## Filtered Plottable Plan Data</span>
+     <span class='co'>## Filtered Plottable Plan Data</span>
      <span class='fu'>plot_planner</span><span class='op'>(</span><span class='va'>plan_xlsx</span>, by <span class='op'>=</span> <span class='st'>"priority"</span>, data_only <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='co'>## Extended with ggplot2</span>
+     <span class='co'>## Extended with ggplot2</span>
      <span class='fu'>plot_planner</span><span class='op'>(</span>
          <span class='va'>plan_xlsx</span>,
          by <span class='op'>=</span> <span class='st'>"tasks"</span>,
-         basic_plot <span class='op'>=</span> <span class='cn'>TRUE</span>,
+         plot_type <span class='op'>=</span> <span class='st'>"basic"</span>,
          title <span class='op'>=</span> <span class='st'>"Tasks Progress"</span>
      <span class='op'>)</span> <span class='op'>+</span>
-         <span class='fu'>geom_bar</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-         <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span>
+     <span class='fu'>geom_bar</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+     <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span>
+
+    <span class='co'>## Extended with plotly</span>
+    <span class='fu'>plot_planner</span><span class='op'>(</span>
+        <span class='va'>plan_xlsx</span>,
+        by <span class='op'>=</span> <span class='st'>"checklists"</span>,
+        interactive <span class='op'>=</span> <span class='cn'>TRUE</span>,
+        title <span class='op'>=</span> <span class='st'>"Interactive Donut Chart"</span>
+    <span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
   </div>

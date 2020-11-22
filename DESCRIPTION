@@ -1,7 +1,7 @@
 Package: plannr
 Type: Package
 Title: Parse and Plot Microsoft Planner Data
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: person("Justin", "Singh-Mohudpur", email = "justin@justinsingh.me",
                   role = c("aut", "cre"))
 Maintainer: Justin Singh-M <justin@justinsingh.me>
@@ -14,10 +14,12 @@ Imports:
     dplyr,
     magrittr,
     ggplot2,
+    plotly,
     stringr,
     stats,
     readr,
-    hablar
+    hablar,
+    crayon
 Suggests:
     testthat,
     covr

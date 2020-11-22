@@ -3,3 +3,5 @@
 ^docs$
 ^pkgdown$
 ^\.travis\.yml$
+^package\.R$
+^tests/testdata/~\$test_plan\.xlsx$

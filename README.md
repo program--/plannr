@@ -4,7 +4,8 @@
 [![Codecov test coverage](https://codecov.io/gh/program--/plannr/branch/master/graph/badge.svg)](https://codecov.io/gh/program--/plannr?branch=master)
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
-**plannr** is an in-development package used for parsing **Microsoft Planner** data into R via exported *Excel* spreadsheets to easily create beautiful **ggplot** visuals.
+**plannr** is an in-development package used for parsing **Microsoft Planner** data into R via
+exported *Excel* spreadsheets for easy usage and creation of beautiful **ggplot2** or **plotly** visuals.
 
 Usage of plannr is fairly simple:
 
@@ -12,7 +13,7 @@ Usage of plannr is fairly simple:
 2. Export plan to Excel (as `.xlsx`).
 3. Read using plannr's `read_planner()` function.
 
-Now you have your Planner data in *tibble* form!
+Now you have your Planner data imported into **R** as a `plannr` object!
 
 ## Installation
 To install the developmental version:
@@ -22,7 +23,7 @@ remotes::install_github("program--/plannr")
 ```
 
 ## Plotting with plannr
-Using the `plot_planner()` function, you can quickly create a **donut chart** using `ggplot` to your specifications. `plot_planner()` supports filtering by:
+Using the `plot_planner()` function, you can quickly create a **donut chart** using `ggplot` or `plotly` to your specifications. `plot_planner()` supports filtering by:
 
 - `tasks` - Tasks (w/o Checklists)
 - `checklists` - Tasks (w/ Checklists)
@@ -33,7 +34,30 @@ Using the `plot_planner()` function, you can quickly create a **donut chart** us
 
 ### Examples:
 
-**Basic Usage**
+**Plannr Object Summary**
+
+```r
+plan_xlsx <- read_planner("path/to/planner.xlsx")
+
+summary(plan_xlsx)
+
+# Return:
+# =======>> PLANNER <<=======
+#    Plan Name: Example Plan
+#  Export Date: 01/01/1234
+# ========>> TASKS <<========
+#       Total: 32 Tasks
+#   Completed: 4    (12.50%)
+# In Progress: 5    (15.62%)
+# Not Started: 23   (71.88%)
+# ===>> CHECKLIST TASKS <<===
+#       Total: 57 Tasks
+#   Completed: 0    (0.00%)
+# Not Started: 57   (100.00%)
+# ===========================
+```
+
+**Basic Plotting**
 
 ```r
 # Print a donut plot taking into account checklists on tasks
@@ -41,6 +65,8 @@ plan_xlsx <- read_planner("path/to/planner.xlsx")
 
 plot_planner(plan_xlsx, by = "checklists")
 ```
+
+![](man/figures/example_ggplot.png)
 
 **Getting *filtered* plot data**
 
@@ -52,18 +78,33 @@ plot_planner(plan_xlsx, by = "priority", data_only = TRUE)
 **Extending with `ggplot`**
 
 ```r
-# Easy customizability via `basic_plot` argument.
+# Easy customizability via `plot_type = "basic"` argument.
+# Which, returns a ggplot() object of the planner data without
+# anything additional.
 #
 # labs() parameters can be added to the end of the argument list
 # for plot_planner() calls.
 plot_planner(
     plan_xlsx,
     by = "tasks",
-    basic_plot = TRUE,
+    plot_type = "basic",
     title = "Tasks Progress"
 ) +
-    geom_bar() +
-    theme_bw()
+geom_bar() +
+theme_bw() +
+theme(
+    legend.position = "none"
+)
+```
+
+**Interactive plots with `plotly`**
+
+```r
+plot_planner(
+    plan_xlsx,
+    by = "checklists",
+    interactive = TRUE
+)
 ```
 
 ## Using `dplyr` with Planner data

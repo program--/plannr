@@ -4,6 +4,10 @@ template:
   params:
     bootswatch: paper
 reference:
+  - title: Plannr Class
+    contents:
+      - '`print.plannr`'
+      - '`summary.plannr`'
   - title: Parsing Planner Data
     contents:
       - '`read_planner`'

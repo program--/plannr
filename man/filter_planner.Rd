@@ -12,7 +12,7 @@ filter_planner(planner, ...)
 \item{...}{dplyr::filter arguments}
 }
 \value{
-A new Planner list with original plan name,
+A new Planner object with original plan name,
         original plan export date, and filtered plan data
 }
 \description{
