@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/program--/plannr.svg?branch=master)](https://travis-ci.org/program--/plannr)
 [![Codecov test coverage](https://codecov.io/gh/program--/plannr/branch/master/graph/badge.svg)](https://codecov.io/gh/program--/plannr?branch=master)
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 **plannr** is an in-development package used for parsing **Microsoft Planner** data into R via
 exported *Excel* spreadsheets for easy usage and creation of beautiful **ggplot2** or **plotly** visuals.
@@ -112,7 +112,7 @@ plot_planner(
 Currently there's two supported ways of using `dplyr` functions via plannr.
 
 1. Using `filter_planner()` for `dplyr::filter()`.
-2. Using `plot_planner(..., data_only = TRUE, ...)` with `tidyverse` piping.
+2. Using `plot_planner(..., data_only = TRUE, ...)` with `magrittr` piping.
 
 ## Documentation
 
